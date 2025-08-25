@@ -1,0 +1,36 @@
+# Sealos App 配置 - Node.js API 服务
+apiVersion: app.sealos.io/v1
+kind: App
+metadata:
+  name: jobs-api
+  namespace: ns-4dawiaba  # 替换为你的命名空间
+spec:
+  data:
+    url: https://api.your-domain.com
+  displayType: normal
+  gitRepo: https://github.com/your-username/jobs-search-backend
+  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/node-js.png
+  name: Jobs Search API
+  readme: |
+    # Jobs Search API
+
+    ## 功能特性
+    - 职位信息查询API
+    - 支持关键词、地点、公司等多维度搜索
+    - 职位统计分析
+    - 爬虫数据接入接口
+
+    ## API 端点
+    - GET /api/jobs - 获取职位列表
+    - GET /api/jobs/:id - 获取职位详情  
+    - GET /api/jobs/stats - 获取职位统计
+    - POST /api/jobs/scraper/* - 爬虫数据接入
+
+    ## 技术栈
+    - Node.js + TypeScript
+    - Express.js
+    - MongoDB + Mongoose
+    - JWT 认证
+    - 安全防护 (Helmet, CORS, Rate Limiting)
+
+  type: iframe

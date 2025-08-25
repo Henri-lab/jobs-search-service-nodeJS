@@ -1,0 +1,41 @@
+# Sealos App 配置 - Python 爬虫服务
+apiVersion: app.sealos.io/v1
+kind: App
+metadata:
+  name: jobs-scraper
+  namespace: ns-4dawiaba  # 替换为你的命名空间
+spec:
+  data:
+    url: ""  # 爬虫服务没有Web界面
+  displayType: normal
+  gitRepo: https://github.com/your-username/jobs-search-scraper
+  icon: https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/python.png
+  name: Jobs Scraper Service
+  readme: |
+    # Jobs Scraper Service
+
+    ## 功能特性
+    - 自动爬取Boss直聘等招聘网站职位信息
+    - 通过API接口向Node.js服务推送数据
+    - 定时任务调度
+    - 多源多关键词爬取支持
+
+    ## 爬取源
+    - Boss直聘 (zhipin.com)
+    - 拉勾网 (lagou.com) - 待完善
+    - 更多招聘网站扩展中...
+
+    ## 技术栈
+    - Python 3.11
+    - Selenium + ChromeDriver
+    - BeautifulSoup
+    - Requests
+    - Schedule (定时任务)
+
+    ## 部署说明
+    - 单实例运行避免重复爬取
+    - 包含Chrome浏览器环境
+    - 支持无头模式运行
+    - 自动数据推送到API服务
+
+  type: other

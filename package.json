@@ -1,0 +1,60 @@
+{
+  "name": "jobs-search-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Jobs Search UniApp",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "esbuild src/app.ts --bundle --platform=node --target=node18 --outfile=dist/app.js --sourcemap --minify",
+    "build:dev": "esbuild src/app.ts --bundle --platform=node --target=node18 --outfile=dist/app.js --sourcemap",
+    "build:tsc": "tsc",
+    "start": "node dist/app.js",
+    "start:prod": "NODE_ENV=production node dist/app.js",
+    "dev": "NODE_ENV=development npx tsx watch src/app.ts",
+    "dev:local": "NODE_ENV=development npx tsx watch src/app.ts",
+    "dev:old": "nodemon --exec ts-node src/app.ts",
+    "seed": "npx tsx scripts/seed-data.ts",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rimraf dist"
+  },
+  "keywords": ["express", "typescript", "jobs", "api"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.2.0",
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.3.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "compression": "^1.7.4",
+    "express-validator": "^7.0.1",
+    "joi": "^17.12.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20.12.7",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan": "^1.9.9",
+    "@types/compression": "^1.7.5",
+    "@types/joi": "^17.2.3",
+    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2",
+    "nodemon": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.12"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
