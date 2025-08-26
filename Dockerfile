@@ -1,5 +1,5 @@
-# 使用官方 Node.js 运行时作为基础镜像
-FROM node:18-alpine
+# 构建阶段
+FROM --platform=$BUILDPLATFORM node:18-alpine AS builder
 
 # 设置工作目录
 WORKDIR /app
@@ -7,22 +7,34 @@ WORKDIR /app
 # 复制 package.json 和 package-lock.json
 COPY package*.json ./
 
-# 安装依赖
-RUN npm ci --only=production
+# 安装所有依赖（包括开发依赖）
+RUN npm ci
 
 # 复制源代码
 COPY src/ ./src/
 COPY tsconfig.json ./
 
-# 安装 TypeScript 和构建工具
-RUN npm install -g typescript esbuild
-
 # 构建应用
 RUN npm run build
 
+# 生产阶段
+FROM node:18-alpine AS production
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制 package.json 和 package-lock.json
+COPY package*.json ./
+
+# 仅安装生产依赖
+RUN npm ci --only=production && npm cache clean --force
+
+# 从构建阶段复制构建产物
+COPY --from=builder /app/dist ./dist
+
 # 创建非root用户
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nodeuser -u 1001
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodeuser -u 1001
 
 # 更改文件所有权
 RUN chown -R nodeuser:nodejs /app
