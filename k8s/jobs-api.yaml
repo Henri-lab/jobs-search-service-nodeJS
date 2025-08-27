@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: jobs-api
-        image: registry.cn-hangzhou.aliyuncs.com/henrifox/jobs-search-backend:amd64
+        image: henrifox37/jobs-search-backend:sealos
         ports:
         - containerPort: 8081
         env:

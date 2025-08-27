@@ -125,11 +125,20 @@ npm run build
 ### 构建镜像
 
 ```bash
-# 构建多架构镜像
-docker buildx build --platform linux/amd64,linux/arm64 -t henrifox/jobs-search-backend:latest .
+# 构建 amd64 架构镜像（Sealos/K8s 部署）
+docker build --platform linux/amd64 -t henrifox37/jobs-search-backend:sealos .
 
-# 构建特定架构
-docker build --platform linux/amd64 -t henrifox/jobs-search-backend:amd64 .
+# 推送镜像到 Docker Hub
+docker push henrifox37/jobs-search-backend:sealos
+
+# 构建多架构镜像（可选）
+docker buildx build --platform linux/amd64,linux/arm64 -t henrifox37/jobs-search-backend:latest .
+```
+
+**一键构建和推送脚本**：
+```bash
+# 运行部署脚本
+./scripts/build-and-push.sh
 ```
 
 ### 运行容器
@@ -144,7 +153,7 @@ docker run -d \
   -e NODE_ENV=production \
   -e MONGODB_URI=mongodb://localhost:27017/jobs-search \
   -e JWT_SECRET=your_secret_key \
-  henrifox/jobs-search-backend:latest
+  henrifox37/jobs-search-backend:sealos
 ```
 
 ## Kubernetes 部署
@@ -171,8 +180,7 @@ kubectl get services jobs-api-service
 
 项目支持多种容器镜像仓库：
 
-- **Docker Hub**: `henrifox/jobs-search-backend:latest`
-- **阿里云**: `registry.cn-hangzhou.aliyuncs.com/henrifox/jobs-search-backend:amd64`
+- **Docker Hub**: `henrifox37/jobs-search-backend:sealos`
 
 ## 爬虫使用
 
