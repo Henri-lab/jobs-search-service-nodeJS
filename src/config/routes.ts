@@ -4,7 +4,7 @@ import jobRoutes from '../routes/jobs';
 
 export const configureRoutes = (app: Application): void => {
   // Health check endpoint
-  app.get('/health', (req, res) => {
+  app.get('/health', (_req, res) => {
     res.status(200).json({
       status: 'OK',
       timestamp: new Date().toISOString(),
@@ -18,7 +18,7 @@ export const configureRoutes = (app: Application): void => {
   app.use('/api/jobs', jobRoutes);
 
   // API documentation
-  app.get('/api', (req, res) => {
+  app.get('/api', (_req, res) => {
     res.json({
       message: 'Jobs Search API',
       version: '1.0.0',
