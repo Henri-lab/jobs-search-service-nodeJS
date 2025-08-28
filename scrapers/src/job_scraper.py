@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 class JobScraper:
     def __init__(self):
-        self.api_base_url = os.getenv('API_BASE_URL', 'http://localhost:8081/api')
+        self.api_base_url = os.getenv('API_BASE_URL', 'http://localhost:3001/api')
         self.api_token = os.getenv('API_TOKEN', '')  # 如果需要认证的话
         
         # Selenium配置

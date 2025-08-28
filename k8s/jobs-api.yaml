@@ -18,12 +18,12 @@ spec:
       - name: jobs-api
         image: henrifox37/jobs-search-backend:sealos
         ports:
-        - containerPort: 8081
+        - containerPort: 3001
         env:
         - name: NODE_ENV
           value: "production"
         - name: PORT
-          value: "8081"
+          value: "3001"
         - name: MONGODB_URI
           valueFrom:
             secretKeyRef:
@@ -48,13 +48,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: 8081
+            port: 3001
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /health
-            port: 8081
+            port: 3001
           initialDelaySeconds: 5
           periodSeconds: 5
 
@@ -69,7 +69,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8081
+      targetPort: 3001
   type: ClusterIP
 
 ---

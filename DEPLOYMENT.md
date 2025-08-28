@@ -20,7 +20,7 @@
 ## 服务说明
 
 ### 1. Node.js API 服务 (jobs-api)
-- **端口**: 8081
+- **端口**: 3001
 - **功能**: 
   - 提供职位查询API
   - 接收爬虫数据
@@ -97,7 +97,7 @@
 
 #### Node.js API 服务
 - `NODE_ENV`: 运行环境 (production)
-- `PORT`: 服务端口 (8081)
+- `PORT`: 服务端口 (3001)
 - `MONGODB_URI`: MongoDB 连接字符串
 - `JWT_SECRET`: JWT 签名密钥
 - `JWT_EXPIRES_IN`: Token 过期时间

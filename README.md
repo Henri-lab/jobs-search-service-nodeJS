@@ -65,7 +65,7 @@ chmod +x setup_conda.sh
 环境变量配置示例：
 ```bash
 # 服务器配置
-PORT=8081
+PORT=3001
 NODE_ENV=development
 
 # MongoDB 数据库配置
@@ -76,7 +76,7 @@ JWT_SECRET=your_jwt_secret_key_here
 JWT_EXPIRES_IN=24h
 
 # 允许的来源域名（CORS）
-ALLOWED_ORIGINS=http://localhost:5173,http://localhost:8081
+ALLOWED_ORIGINS=http://localhost:5173,http://localhost:3001
 ```
 
 ### 3. 数据库初始化
@@ -149,7 +149,7 @@ docker-compose up -d
 
 # 或单独运行
 docker run -d \
-  -p 8081:8081 \
+  -p 3001:3001 \
   -e NODE_ENV=production \
   -e MONGODB_URI=mongodb://localhost:27017/jobs-search \
   -e JWT_SECRET=your_secret_key \
